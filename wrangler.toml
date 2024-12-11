@@ -1,4 +1,4 @@
-name = "honc-d1-template"
+name = "whonc-demo"
 compatibility_date = "2024-11-11"
 compatibility_flags = [ "nodejs_compat" ]
 

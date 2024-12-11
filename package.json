@@ -1,5 +1,5 @@
 {
-  "name": "hono-d1-drizzle-template",
+  "name": "whonc-demo",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
@@ -10,12 +10,15 @@
     "db:seed": "tsx seed.ts",
     "db:setup": "npm run db:touch && npm run db:generate && npm run db:migrate && npm run db:seed",
     "db:studio": "drizzle-kit studio",
-    "fiberplane": "fpx"
+    "fiberplane": "fpx",
+    "format": "biome check --write"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.36.4",
-    "hono": "^4.6.7"
+    "hono": "^4.6.7",
+    "types": "^0.1.1",
+    "weaviate-ts-client": "^2.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241106.0",
