@@ -1,11 +1,18 @@
 ## 🪿 HONC
+[Weaviate](https://weaviate.io/) meets [HONC](https://honc.dev)
 
-This is a project created with the `create-honc-app` template. 
+This project was created using the `create-honc-app D1 template`. However, the current example does not yet store anything in the database (Work in Progress).
 
-Learn more about the HONC stack on the [website](https://honc.dev) or the main [repo](https://github.com/fiberplane/create-honc-app).
+The application integrates Weaviate with a vector model containing a book vector database. It leverages the [Weaviate TypeScript client](https://weaviate.io/developers/weaviate/client-libraries/typescript/typescript-v2) for semantic search, providing results based on specific topics input by the user.
 
-### Getting started
-[D1](https://developers.cloudflare.com/d1/) is Cloudflare's serverless SQL database. Running HONC with a D1 database involves two key steps: first, setting up the project locally, and second, deploying it in production. You can spin up your D1 database locally using Wrangler. If you're planning to deploy your application for production use, ensure that you have created a D1 instance in your Cloudflare account.
+
+*Side note:* The project uses the Weaviate client library v2 due to the Cloudflare integration. The Weaviate client v3 depends on the gRPC protocol, which requires HTTP/2, a feature not supported by Cloudflare. This issue is already documented in an. There is already an [open issue on the Weaviate client (v3) library](https://github.com/weaviate/typescript-client/issues/145) descriping this problem
+
+## Getting started
+In order to run the application you need to provide your Weaviate credentials. 
+Create a `dev.vars` file at the root of the proejct and include the `WCD_URL_DEMO` and the `WCD_KEY_DEMO`. 
+You can get your Weaviate URL to your model and the [API key](https://weaviate.io/developers/weaviate/connections/connect-cloud) in the Weaviate Dashboard.
+
 
 ### Project structure
 
@@ -16,27 +23,30 @@ Learn more about the HONC stack on the [website](https://honc.dev) or the main [
 │       └── schema.ts # Database schema
 ├── .dev.vars.example # Example .dev.vars file
 ├── .prod.vars.example # Example .prod.vars file
-├── seed.ts # Optional script to seed the db
 ├── drizzle.config.ts # Drizzle configuration
 ├── package.json
 ├── tsconfig.json # TypeScript configuration
 └── wrangler.toml # Cloudflare Workers configuration
 ```
 
+
 ### Commands for local development
-
-Run the migrations and (optionally) seed the database:
-
-```sh
-# this is a convenience script that runs db:touch, db:generate, db:migrate, and db:seed
-npm run db:setup
-```
 
 Run the development server:
 
 ```sh
 npm run dev
 ```
+
+Spin up Fiberplane next to the application to start sending requests
+
+```sh
+npm run fiberplane
+```
+
+### Adding D1 as a database
+
+[D1](https://developers.cloudflare.com/d1/) is Cloudflare's serverless SQL database. Running HONC with a D1 database involves two key steps: first, setting up the project locally, and second, deploying it in production. You can spin up your D1 database locally using Wrangler. If you're planning to deploy your application for production use, ensure that you have created a D1 instance in your Cloudflare account.
 
 As you iterate on the database schema, you'll need to generate a new migration file and apply it like so:
 
@@ -45,7 +55,7 @@ npm run db:generate
 npm run db:migrate
 ```
 
-### Commands for deployment
+## Commands for deployment
 
 Before deploying your worker to Cloudflare, ensure that you have a running D1 instance on Cloudflare to connect your worker to.
 
