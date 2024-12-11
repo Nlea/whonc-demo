@@ -1,5 +1,10 @@
 ## 🪿 HONC
-[Weaviate](https://weaviate.io/) meets [HONC](https://honc.dev)
+
+
+
+<img src="./weaviate-meets-honc.jpg" width="200" height="200" alt="a Goose infront a computer with a weaviate sign">
+
+[HONC](https://honc.dev) meets [Weaviate](https://weaviate.io/)
 
 This project was created using the `create-honc-app D1 template`. However, the current example does not yet store anything in the database (Work in Progress).
 
