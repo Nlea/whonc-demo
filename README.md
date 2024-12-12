@@ -60,6 +60,20 @@ npm run db:migrate
 
 ## Commands for deployment
 
+Add your secrets for the app
+```shell 
+npx wrangler secret put WCD_URL_DEMO
+npx wranger secret put WCD_KEY_DEMO
+```
+
+Deploy your worker
+```shell 
+npm run deploy
+```
+
+
+### Deploying with D1
+
 Before deploying your worker to Cloudflare, ensure that you have a running D1 instance on Cloudflare to connect your worker to.
 
 You can create a D1 instance by navigating to the `Workers & Pages` section and selecting `D1 SQL Database.`
